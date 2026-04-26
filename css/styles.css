@@ -525,6 +525,13 @@ img {
     border-color: var(--first-color);
 }
 
+/*ESTE SE PUSO CON LA ACTUALIZACION PARA AUDITORIA*/
+.cursos__img {
+    width: 100%;
+    height: 220px; /* Puedes ajustar este valor si las quieres más altas o más bajitas */
+    object-fit: cover; /* Evita que la imagen se deforme al forzar la altura */
+}
+
 .cursos__data{
     padding: 1.5rem 1rem 3rem;
 }
