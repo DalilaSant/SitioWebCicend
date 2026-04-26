@@ -46,18 +46,33 @@ document.getElementById('form-buscar-folio').addEventListener('submit', async fu
     e.preventDefault(); // Prevenir recarga.
 
     const formData = new FormData(this); // Capturar datos del formulario.
-
+    const resultadoDiv = document.getElementById('resultado');  //25/03
+    
     try {
+        // Borrar el contenido viejo para forzar un cambio visual
+        resultadoDiv.innerHTML = '';
+        
         const response = await fetch('php/buscar_folio.php', {
             method: 'POST',
             body: formData,
         });
 
         const html = await response.text(); // Leer respuesta como texto HTML.
-        document.getElementById('resultado').innerHTML = html; // Mostrar el resultado debajo del formulario.
+        
+        
+        resultadoDiv.classList.add('resaltado'); //25/03
+        
+        //document.getElementById('resultado').innerHTML = html; // Mostrar el resultado debajo del formulario. //25/03
+    
+        //todo esto se puso 25/03 64-67
+        setTimeout(() => {
+            resultadoDiv.innerHTML = html; // Mostrar el nuevo resultado
+            resultadoDiv.classList.remove('resaltado'); // Quitar la animación después de actualizar
+        }, 100); // Esperar 500ms para la animación
     } catch (error) {
         console.error('Error:', error);
-        document.getElementById('resultado').innerHTML = '<p style="color: red;">Hubo un problema al procesar la solicitud.</p>';
+        resultadoDiv.innerHTML = '<p style="color: red;">Hubo un problema al procesar la solicitud.</p>'; //25/03
+        //document.getElementById('resultado').innerHTML = '<p style="color: red;">Hubo un problema al procesar la solicitud.</p>'; 25/03
     }
 });
 

@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root"; // Usuario de XAMPP
-$password = ""; // Contraseña (por defecto vacía)
-$dbname = "cursos_db"; // Nombre de la base de datos
+$username = "u571279726_root"; // Usuario de XAMPP
+$password = "ojK/QTP1^"; // Contraseña (por defecto vacía)
+$dbname = "u571279726_participantes"; // Nombre de la base de datos
 
 // Conectar a la base de datos
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -28,11 +28,15 @@ if (!empty($nombre_completo) && !empty($folio)) {
 
     if ($result->num_rows > 0) {
         $data = $result->fetch_assoc();
-        $estado = $data['estado'] === 'activo' ? 'Estado: Activo' : 'Estado: Inactivo';
+        $estado = $data['estado'] === 'activo' ? 'Estado: Verificado' : 'Estado: No Verificado';
         $color = $data['estado'] === 'activo' ? 'green' : 'red';
-
+        $curso = htmlspecialchars($data['curso']); // Sanitiza el curso para evitar problemas de seguridad //22/03
+        $fecha = date("d-m-Y", strtotime($data['fecha_inscripcion'])); // Formatea la fecha a DD-MM-YYYY //22/03
+        
         echo "<div class='resultado-box'>
-                <p style='color: $color;'>$estado</p>
+               <p style='color: $color;'><strong>$estado</strong></p>
+               <p><strong>Curso:</strong> $curso</p>
+               <p><strong>Fecha de inscripción:</strong> $fecha</p>
               </div>";
     } else {
         echo "<div class='resultado-box'>

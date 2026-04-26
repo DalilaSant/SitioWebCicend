@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root"; // Usuario por defecto en XAMPP
-$password = ""; // Contraseña por defecto (vacía)
-$dbname = "cursos_db"; // Nombre de la base de datos
+$username = "u571279726_root"; // Usuario por defecto en XAMPP
+$password = "ojK/QTP1^"; // Contraseña por defecto (vacía)
+$dbname = "u571279726_participantes"; // Nombre de la base de datos
 
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password);

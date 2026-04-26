@@ -658,6 +658,18 @@ img {
     font-weight: bold;
 }
 
+/*estilo para la animacion cambio de resultados 22/03*/
+/* Animación de parpadeo */
+@keyframes highlight {
+    0% { background-color: yellow; }
+    50% { background-color: white; }
+    100% { background-color: yellow; }
+}
+
+.resaltado {
+    animation: highlight 1s ease-in-out 2; /* Hace el efecto dos veces */
+}
+
 /*=============== MATERIAL  ===============*/
 
 .recursos__contenedor{
